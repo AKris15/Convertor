@@ -38,8 +38,44 @@ If the output file already exists, the script will ask:
 
 This prevents accidental data loss.
 
+## GIF conversion modes
+
+The script includes three GIF presets:
+
+### Standard GIF
+```
+convert input.mp4 gif
+
+```
+- 12 FPS  
+- 480px width  
+- Lanczos scaling
+
+
+### Fast GIF
+```
+convert input.mp4 giffast
+
+```
+- 10 FPS  
+- 360px width  
+- Faster and smaller file sizes
+
+
+### High-quality GIF
+```
+convert input.mp4 gifhq
+
+```
+- 15 FPS  
+- 720px width  
+- Lanczos scaling for high quality
+
+These modes make GIF generation simple and consistent.
+
 ## Features 
 - Single-file conversion
 - Auto-generated output name
 - Custom output filename support
 - Overwrite prompt
+- GIF Conversion

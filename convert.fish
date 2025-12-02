@@ -33,7 +33,20 @@ function convert
         end
     end
 
-    ffmpeg -i "$input" "$output"
+    # GIF modes added here
+    switch $ext
+        case gif
+            ffmpeg -i "$input" -vf "fps=12,scale=480:-1:flags=lanczos" -loop 0 "$output"
+
+        case giffast
+            ffmpeg -i "$input" -vf "fps=10,scale=360:-1" -loop 0 "$output"
+
+        case gifhq
+            ffmpeg -i "$input" -vf "fps=15,scale=720:-1:flags=lanczos" -loop 0 "$output"
+
+        case '*'
+            ffmpeg -i "$input" "$output"
+    end
 
     if test $status -eq 0
         echo "Done: $output"
