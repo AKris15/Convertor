@@ -73,9 +73,41 @@ convert input.mp4 gifhq
 
 These modes make GIF generation simple and consistent.
 
+## Audio format support
+
+The script now supports audio extraction and conversion:
+
+### MP3
+```
+convert video.mp4 mp3
+```
+- Uses `libmp3lame`
+- Good quality (q:a 2)
+
+### WAV
+```
+convert video.mp4 wav
+```
+- Raw uncompressed audio
+
+### FLAC
+```
+convert video.mp4 flac
+```
+- Lossless compression
+
+### OGG (Vorbis)
+```
+convert video.mp4 ogg
+```
+- Vorbis codec, quality level 5
+
+These formats allow you to quickly extract or convert audio using ffmpeg.
+
 ## Features 
 - Single-file conversion
 - Auto-generated output name
 - Custom output filename support
 - Overwrite prompt
 - GIF Conversion
+- Audio Conversion/Extraction

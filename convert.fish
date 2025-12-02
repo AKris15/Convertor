@@ -33,8 +33,20 @@ function convert
         end
     end
 
-    # GIF modes added here
+    # Conversion logic
     switch $ext
+        case mp3
+            ffmpeg -i "$input" -vn -acodec libmp3lame -q:a 2 "$output"
+
+        case wav
+            ffmpeg -i "$input" -vn "$output"
+
+        case flac
+            ffmpeg -i "$input" -vn -c:a flac "$output"
+
+        case ogg
+            ffmpeg -i "$input" -vn -c:a libvorbis -q:a 5 "$output"
+
         case gif
             ffmpeg -i "$input" -vf "fps=12,scale=480:-1:flags=lanczos" -loop 0 "$output"
 
@@ -54,4 +66,3 @@ function convert
         echo "Conversion failed."
     end
 end
-
