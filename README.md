@@ -14,6 +14,13 @@ convert <input-file> <extension>
 ```
 
 Example:
+You can provide your own full output filename:
+```
+
+convert video.mp4 newname.mkv
+
+```
+Or just an extension:
 ```
 
 convert video.mp4 mkv
