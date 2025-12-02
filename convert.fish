@@ -19,6 +19,20 @@ function convert
         set output "$base.$ext"
     end
 
+    # Overwrite check
+    if test -f "$output"
+        echo -n "'$output' already exists. Overwrite? (y/N): "
+        read ans
+
+        switch (string lower $ans)
+            case y yes
+                echo "Overwriting..."
+            case '*'
+                echo "Cancelled."
+                return 1
+        end
+    end
+
     ffmpeg -i "$input" "$output"
 
     if test $status -eq 0

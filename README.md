@@ -26,3 +26,20 @@ Or just an extension:
 convert video.mp4 mkv
 
 ```
+
+### Overwrite protection
+If the output file already exists, the script will ask:
+
+```
+
+'output.mkv' already exists. Overwrite? (y/N):
+
+```
+
+This prevents accidental data loss.
+
+## Features 
+- Single-file conversion
+- Auto-generated output name
+- Custom output filename support
+- Overwrite prompt
