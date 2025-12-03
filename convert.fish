@@ -35,6 +35,15 @@ function convert
 
     # Conversion logic
     switch $ext
+        case mp4
+            ffmpeg -i "$input" -c:v libx264 -c:a aac "$output"
+
+        case mkv
+            ffmpeg -i "$input" -c:v libx264 -c:a aac "$output"
+
+        case webm
+            ffmpeg -i "$input" -c:v libvpx-vp9 -b:v 2M -c:a libopus "$output"
+
         case mp3
             ffmpeg -i "$input" -vn -acodec libmp3lame -q:a 2 "$output"
 

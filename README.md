@@ -104,6 +104,34 @@ convert video.mp4 ogg
 
 These formats allow you to quickly extract or convert audio using ffmpeg.
 
+## Video format support
+
+The script now includes presets for common video output formats.
+
+### MP4
+```
+convert input.mkv mp4
+```
+- H.264 video (`libx264`)
+- AAC audio
+
+### MKV
+```
+convert input.mp4 mkv
+```
+- H.264 video
+- AAC audio
+
+### WEBM
+```
+convert input.mp4 webm
+```
+- VP9 video (`libvpx-vp9`)
+- Opus audio (`libopus`)
+- Default bitrate: 2 Mbps
+
+These presets make video conversion straightforward and consistent.
+
 ## Features 
 - Single-file conversion
 - Auto-generated output name
@@ -111,3 +139,4 @@ These formats allow you to quickly extract or convert audio using ffmpeg.
 - Overwrite prompt
 - GIF Conversion
 - Audio Conversion/Extraction
+- Video Conversion
