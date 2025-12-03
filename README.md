@@ -1,172 +1,128 @@
 # Convert
-A simple wrapper script (Fish shell) for running ffmpeg conversions more easily.
 
-## Goals
-- Make video/audio conversion easier with a simple `convert` function
+![Shell](https://img.shields.io/badge/shell-fish-blue?style=for-the-badge)
 
-## Usage
+A lightweight and convenient Fish-shell wrapper around **ffmpeg**, designed to simplify everyday media conversion.
+Provides clean syntax, sensible defaults, GIF presets, batch processing, overwrite protection, and support for all major audio/video formats.
 
-### Basic conversion
+---
+
+## ✨ Features
+
+* 🎥 Video conversion (MP4, MKV, WEBM)
+* 🎵 Audio extraction & conversion (MP3, WAV, FLAC, OGG)
+* 🖼️ GIF presets (standard, fast, HQ)
+* 📁 Folder batch mode (`-f`)
+* 🔄 Auto output naming
+* ✏️ Custom filename support
+* ⚠️ Overwrite protection
+* 💡 Help command (`-h`)
+* 🐟 Native Fish-shell function
+
+---
+
+## 🚀 Installation
+
+### **Install directly from GitHub (recommended)**
+
+```sh
+curl -o ~/.config/fish/functions/convert.fish https://raw.githubusercontent.com/AKris15/Convertor/main/convert.fish
 ```
 
+Or:
+
+```sh
+wget -O ~/.config/fish/functions/convert.fish https://raw.githubusercontent.com/AKris15/Convertor/main/convert.fish
+```
+
+Reload Fish:
+
+```sh
+exec fish
+```
+
+---
+
+## 📘 Usage
+
+### Basic Conversion
+
+```
 convert <input-file> <extension>
-
 ```
 
-Example:
-You can provide your own full output filename:
-```
-
-convert video.mp4 newname.mkv
+Examples:
 
 ```
-Or just an extension:
-```
-
 convert video.mp4 mkv
-
+convert video.mp4 newname.mkv
 ```
 
-### Overwrite protection
-If the output file already exists, the script will ask:
+---
+
+## 🔄 Overwrite Protection
+
+If a file already exists:
 
 ```
-
 'output.mkv' already exists. Overwrite? (y/N):
-
 ```
 
-This prevents accidental data loss.
+---
 
-## GIF conversion modes
-
-The script includes three GIF presets:
+## 🖼️ GIF Conversion Modes
 
 ### Standard GIF
+
 ```
 convert input.mp4 gif
-
 ```
-- 12 FPS  
-- 480px width  
-- Lanczos scaling
-
 
 ### Fast GIF
+
 ```
 convert input.mp4 giffast
-
 ```
-- 10 FPS  
-- 360px width  
-- Faster and smaller file sizes
-
 
 ### High-quality GIF
+
 ```
 convert input.mp4 gifhq
-
 ```
-- 15 FPS  
-- 720px width  
-- Lanczos scaling for high quality
 
-These modes make GIF generation simple and consistent.
+---
 
-## Audio format support
+## 🎵 Audio Format Support
 
-The script now supports audio extraction and conversion:
-
-### MP3
 ```
 convert video.mp4 mp3
-```
-- Uses `libmp3lame`
-- Good quality (q:a 2)
-
-### WAV
-```
 convert video.mp4 wav
-```
-- Raw uncompressed audio
-
-### FLAC
-```
 convert video.mp4 flac
-```
-- Lossless compression
-
-### OGG (Vorbis)
-```
 convert video.mp4 ogg
 ```
-- Vorbis codec, quality level 5
 
-These formats allow you to quickly extract or convert audio using ffmpeg.
+---
 
-## Video format support
+## 🎥 Video Format Support
 
-The script now includes presets for common video output formats.
-
-### MP4
 ```
 convert input.mkv mp4
-```
-- H.264 video (`libx264`)
-- AAC audio
-
-### MKV
-```
 convert input.mp4 mkv
-```
-- H.264 video
-- AAC audio
-
-### WEBM
-```
 convert input.mp4 webm
 ```
-- VP9 video (`libvpx-vp9`)
-- Opus audio (`libopus`)
-- Default bitrate: 2 Mbps
 
-These presets make video conversion straightforward and consistent.
+---
 
-## Help flag
+## 📁 Folder Batch Mode
 
-You can display usage information with:
-```
-convert -h
-```
-This shows available formats, GIF presets, and example usage.
-
-## Folder batch mode
-
-You can convert every file in a folder:
 ```
 convert -f ./folder mp3
 ```
 
-This will:
-- Loop through all regular files in the folder
-- Convert each file using the extension you provide
-- Preserve the original filenames (only extension changes)
+---
 
-Example output:
-```
-Batch converting folder: ./videos to mp4
-Converting: ./videos/clip1.mov
-Converting: ./videos/clip2.mov
-...
-Batch conversion finished.
-```
+## ❓ Help
 
-## Features 
-- Single-file conversion
-- Auto-generated output name
-- Custom output filename support
-- Overwrite prompt
-- GIF Conversion
-- Audio Conversion/Extraction
-- Video Conversion
-- Help flag (-h)
+```
+convert -h
+```
