@@ -132,6 +132,14 @@ convert input.mp4 webm
 
 These presets make video conversion straightforward and consistent.
 
+## Help flag
+
+You can display usage information with:
+```
+convert -h
+```
+This shows available formats, GIF presets, and example usage.
+
 ## Features 
 - Single-file conversion
 - Auto-generated output name
@@ -140,3 +148,4 @@ These presets make video conversion straightforward and consistent.
 - GIF Conversion
 - Audio Conversion/Extraction
 - Video Conversion
+- Help flag (-h)

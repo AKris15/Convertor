@@ -1,6 +1,29 @@
 function convert
+    # Help option
+    if test (count $argv) -eq 1
+        switch $argv[1]
+            case "-h" "--help"
+                echo "Usage:"
+                echo "  convert <input> <extension | output-file>"
+                echo ""
+                echo "Examples:"
+                echo "  convert video.mp4 mkv"
+                echo "  convert video.mp4 newname.mkv"
+                echo ""
+                echo "GIF modes:"
+                echo "  gif, giffast, gifhq"
+                echo ""
+                echo "Audio formats:"
+                echo "  mp3, wav, flac, ogg"
+                echo ""
+                echo "Video formats:"
+                echo "  mp4, mkv, webm"
+                return 0
+        end
+    end
+
     if test (count $argv) -ne 2
-        echo "Usage: convert <input-file> <extension | output-file>"
+        echo "Invalid usage. Run: convert -h"
         return 1
     end
 
