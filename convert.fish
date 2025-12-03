@@ -5,10 +5,12 @@ function convert
             case "-h" "--help"
                 echo "Usage:"
                 echo "  convert <input> <extension | output-file>"
+                echo "  convert -f <folder> <extension>"
                 echo ""
                 echo "Examples:"
                 echo "  convert video.mp4 mkv"
                 echo "  convert video.mp4 newname.mkv"
+                echo "  convert -f ./folder mp3"
                 echo ""
                 echo "GIF modes:"
                 echo "  gif, giffast, gifhq"
@@ -22,6 +24,30 @@ function convert
         end
     end
 
+    # Folder batch mode
+    if test (count $argv) -eq 3 -a "$argv[1]" = "-f"
+        set folder $argv[2]
+        set ext    $argv[3]
+
+        if not test -d "$folder"
+            echo "Folder not found: $folder"
+            return 1
+        end
+
+        echo "Batch converting folder: $folder to $ext"
+
+        for f in $folder/*
+            if test -f "$f"
+                echo "Converting: $f"
+                convert "$f" "$ext"
+            end
+        end
+
+        echo "Batch conversion finished."
+        return 0
+    end
+
+    # Single-file mode
     if test (count $argv) -ne 2
         echo "Invalid usage. Run: convert -h"
         return 1
@@ -58,10 +84,7 @@ function convert
 
     # Conversion logic
     switch $ext
-        case mp4
-            ffmpeg -i "$input" -c:v libx264 -c:a aac "$output"
-
-        case mkv
+        case mp4 mkv
             ffmpeg -i "$input" -c:v libx264 -c:a aac "$output"
 
         case webm

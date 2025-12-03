@@ -140,6 +140,27 @@ convert -h
 ```
 This shows available formats, GIF presets, and example usage.
 
+## Folder batch mode
+
+You can convert every file in a folder:
+```
+convert -f ./folder mp3
+```
+
+This will:
+- Loop through all regular files in the folder
+- Convert each file using the extension you provide
+- Preserve the original filenames (only extension changes)
+
+Example output:
+```
+Batch converting folder: ./videos to mp4
+Converting: ./videos/clip1.mov
+Converting: ./videos/clip2.mov
+...
+Batch conversion finished.
+```
+
 ## Features 
 - Single-file conversion
 - Auto-generated output name
